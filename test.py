@@ -6,8 +6,16 @@ def cut(audio):
     audio = AudioSegment.from_file(audio)
     start = int(input("Start second: "))
     end = int(input("End second: "))
-    clip = audio[start:end * 1000]
+    clip = audio[start * 1000:end * 1000]
     clip.export("output.mp3", format="mp3")
+    clip = cut(file_path)
+
+    save_path = filedialog.asksaveasfilename(
+    title="Save MP3",
+    defaultextension=".mp3",
+    filetypes=[("MP3 Files", "*.mp3")])
+
+    clip.export(save_path, format="mp3")
 
 
 def main() -> None:
