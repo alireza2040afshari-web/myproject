@@ -2,12 +2,6 @@ import tkinter as tk
 from tkinter import filedialog
 
 
-def validation(file_path = ""):
-    while file_path.endwith(".mp3"):
-        pass
-    else :
-        pass
-
 def main() -> None:
     root = tk.Tk()
     root = root.withdraw()

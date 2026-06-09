@@ -1,5 +1,13 @@
 import tkinter as tk 
 from tkinter import filedialog
+from pydub import AudioSegment
+
+def cut(audio):
+    audio = AudioSegment.from_file(audio)
+    start = int(input("Start second: "))
+    end = int(input("End second: "))
+    clip = audio[start:end * 1000]
+    clip.export("output.mp3", format="mp3")
 
 
 def main() -> None:
@@ -9,6 +17,7 @@ def main() -> None:
         title="choose MP3",
         filetypes=[("MP3 Files", "*.mp3")]
     )
+    file_path = cut(file_path)
  
 
 if __name__ == "__main__":
