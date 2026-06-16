@@ -15,7 +15,7 @@ def MP3_saver():
     return file_path
 
 
-def get_seconds():
+def get_seconds(duration):
     while True:
         start = input("Start second: ")
         end = input("End second: ")
@@ -27,8 +27,16 @@ def get_seconds():
         start = int(start)
         end = int(end)
 
+        if start < 0:
+            print("Start cannot be negative")
+            continue
+
         if end <= start:
             print("End must be greater than Start")
+            continue
+
+        if end > duration:
+            print(f"End is too large. Max duration is {duration} seconds")
             continue
 
         return start, end
@@ -36,12 +44,13 @@ def get_seconds():
 def cut_audio(file_path):
     audio = AudioSegment.from_file(file_path)
 
-    start, end = get_seconds()
+    duration = len(audio) // 1000 
+
+    start, end = get_seconds(duration)
 
     clip = audio[start * 1000:end * 1000]
 
     return clip
-
 
 def save_audio(clip):
     save_path = filedialog.asksaveasfilename(
