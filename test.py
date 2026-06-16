@@ -3,7 +3,7 @@ from tkinter import filedialog
 from pydub import AudioSegment
 
 
-def MP3_saver():
+def mp3_saver():
     root = tk.Tk()
     root.withdraw()
 
@@ -60,11 +60,11 @@ def save_audio(clip):
     )
 
     if save_path:
-        clip.export(save_path, format="mp3")
+        clip.export(save_path, format = "mp3")
 
 
 def main() -> None:
-    file_path = MP3_saver()
+    file_path = mp3_saver()
 
     if file_path:
         clip = cut_audio(file_path)
