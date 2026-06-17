@@ -14,7 +14,6 @@ def MP3_saver():
 
     return file_path
 
-
 def get_seconds():
     while True:
         start = input("Start second: ")
@@ -61,6 +60,5 @@ def main() -> None:
         save_audio(clip)
     
  
-
 if __name__ == "__main__":
     main()
